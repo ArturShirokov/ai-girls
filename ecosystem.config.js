@@ -1,10 +1,12 @@
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, 'backend', '.env') });
+require(path.join(__dirname, 'backend', 'node_modules', 'dotenv')).config({ path: path.join(__dirname, 'backend', '.env'), quiet: true });
 
 module.exports = {
   apps: [{
     name: 'ai-girls',
     script: './backend/dist/index.js',
+    interpreter: '/opt/node-24.22.2/bin/node',
+    exec_mode: 'fork',
     cwd: '/root/projects/ai-girls',
     instances: 1,
     autorestart: true,
